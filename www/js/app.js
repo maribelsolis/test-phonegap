@@ -45,3 +45,20 @@ new Vue({
     ],
   }
 });
+
+function launchGoogleMap(){
+  launchnavigator.isAppAvailable(launchnavigator.APP.GOOGLE_MAPS, function(isAvailable){
+    var navigator;
+    if(isAvailable){
+      navigator = launchnavigator.APP.GOOGLE_MAPS;
+    }else{
+      console.log("Google Maps not available - falling back to user selection");
+      navigator = launchnavigator.APP.USER_SELECT;
+    }
+    launchnavigator.navigate([37.3753501, -6.0250983], {
+      app: navigator,
+      start: "37.3682562, -6.0096488"
+    });
+
+  });
+}
